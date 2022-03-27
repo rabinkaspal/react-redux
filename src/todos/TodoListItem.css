@@ -1,0 +1,36 @@
+.todo-item-container {
+    background: #f1f1f1;
+    margin-block: 20px;
+    padding: 20px 32px;
+    border-radius: 6px;
+    transition: all 0.6s ease-in-out;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.button-container button {
+    padding: 5px 10px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container button:active {
+    box-shadow: initial;
+}
+.button-container button:focus {
+    box-shadow: 0px 0px 9px 2px #4bad5f;
+}
+
+.btn-completed {
+    background-color: green !important;
+}
+
+.button-container button:not(last-child) {
+    margin-right: 10px;
+}
