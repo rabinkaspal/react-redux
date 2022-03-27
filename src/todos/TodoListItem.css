@@ -1,9 +1,15 @@
 .todo-item-container {
     background: #f1f1f1;
     margin-block: 20px;
-    padding: 20px 32px;
+    padding: 20px;
     border-radius: 6px;
     transition: all 0.6s ease-in-out;
+}
+
+.todo-item-container h3,
+.todo-item-container p {
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .button-container {
@@ -11,20 +17,21 @@
 }
 
 .button-container button {
-    padding: 5px 10px;
+    padding: 5px 15px;
     border: none;
     background-color: red;
     color: white;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .button-container button:active {
     box-shadow: initial;
 }
-.button-container button:focus {
-    box-shadow: 0px 0px 9px 2px #4bad5f;
+.button-container button:hover {
+    box-shadow: 1px 2px 6px 1px #939393;
 }
 
 .btn-completed {
@@ -33,4 +40,11 @@
 
 .button-container button:not(last-child) {
     margin-right: 10px;
+}
+
+.button-container button:disabled,
+.button-container button:disabled:hover {
+    cursor: no-drop;
+    background-color: rgb(176, 176, 176) !important;
+    box-shadow: none;
 }

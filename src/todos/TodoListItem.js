@@ -2,20 +2,10 @@ import React from "react";
 import { useState } from "react";
 import "./TodoListItem.css";
 
-const TodoListItem = props => {
-    const [todo, setTodo] = useState(props.todo);
+const TodoListItem = ({ todo, onDeleteTodoItem, onMarkItemComplete }) => {
     const completedStyle = {
         backgroundColor: todo.isCompleted ? "rgb(159 255 171)" : "#eeeeee",
     };
-
-    function handleClick() {
-        setTodo(prev => {
-            return {
-                ...prev,
-                isCompleted: true,
-            };
-        });
-    }
 
     return (
         <div className="todo-item-container" style={completedStyle}>
@@ -23,13 +13,13 @@ const TodoListItem = props => {
             <p>{todo.description}</p>
             <div className="button-container">
                 <button
-                    onClick={handleClick}
+                    onClick={() => onMarkItemComplete(todo)}
                     className="btn-completed"
-                    disabled={todo.completed}
+                    disabled={todo.isCompleted}
                 >
                     {todo.isCompleted ? "Completed" : "Mark completed"}
                 </button>
-                <button>Delete</button>
+                <button onClick={() => onDeleteTodoItem(todo)}>Delete</button>
             </div>
         </div>
     );

@@ -11,6 +11,10 @@
     background-color: #f3f3f3;
     border-radius: 6px;
 }
+
+.todo-form .form-control {
+    margin-block: 25px;
+}
 .todo-form input {
     width: 100%;
     display: block;
@@ -18,18 +22,42 @@
     padding: 5px;
     border: none;
     outline: none;
-    margin: 12px auto;
+    margin: 5px auto;
+    padding: 5px 8px;
+    border-radius: 4px;
 }
 
 .todo-form button {
     width: 250px;
-    height: 45px;
-    padding: 30px auto;
-    background-color: gray;
+    padding: 15px 0;
     border: none;
     border-radius: 6px;
     color: white;
-    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 500ms ease;
+}
+
+.todo-form .button-container {
+    display: flex;
+    margin-top: 25px;
+}
+
+.todo-form .button-container .btn-save {
+    background-color: #24af35;
+}
+
+.todo-form .button-container .btn-save:hover {
+    background-color: #016d0f;
+}
+
+.todo-form .button-container .btn-cancel {
+    background-color: #c4c4c4;
+}
+
+.todo-form .button-container .btn-cancel:hover {
+    background-color: #4b4848;
 }
 
 input:focus {
@@ -37,5 +65,5 @@ input:focus {
 }
 
 :placeholder-shown {
-    font-size: 18px;
+    font-size: 16px;
 }

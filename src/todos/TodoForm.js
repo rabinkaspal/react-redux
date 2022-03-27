@@ -11,13 +11,21 @@ const TodoForm = ({ todos, createTodoItem, ...props }) => {
     });
 
     function handleChange(event) {
-        console.log(event);
         const { name, value } = event.target;
         setFormData(prevData => {
             return {
                 ...prevData,
                 [name]: value,
             };
+        });
+    }
+
+    function resetFormData(e) {
+        e.preventDefault();
+        setFormData({
+            title: "",
+            description: "",
+            completed: false,
         });
     }
 
@@ -38,25 +46,38 @@ const TodoForm = ({ todos, createTodoItem, ...props }) => {
 
     return (
         <div className="todo-form">
-            <h2>Add new ToDo</h2>
+            <h2>Add New ToDo</h2>
             <form>
-                <label htmlFor="title">Title</label>
-                <input
-                    type="text"
-                    name="title"
-                    placeholder="Enter Todo Item"
-                    value={formData.title}
-                    onChange={handleChange}
-                />
-                <label htmlFor="title">Description</label>
-                <input
-                    type="text"
-                    name="description"
-                    placeholder="Enter Description"
-                    value={formData.description}
-                    onChange={handleChange}
-                />
-                <button onClick={saveForm}>Save</button>
+                <div className="form-control">
+                    <label htmlFor="title">Title</label>
+                    <input
+                        autoComplete="off"
+                        type="text"
+                        name="title"
+                        placeholder="Enter Todo Item"
+                        value={formData.title}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-control">
+                    <label htmlFor="title">Description</label>
+                    <input
+                        autoComplete="off"
+                        type="text"
+                        name="description"
+                        placeholder="Enter Description"
+                        value={formData.description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="button-container">
+                    <button onClick={saveForm} className="btn-save">
+                        Save
+                    </button>
+                    <button onClick={resetFormData} className="btn-cancel">
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
     );
