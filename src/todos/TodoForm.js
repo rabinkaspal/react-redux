@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createTodo } from "../redux/actions/TodoActions";
 import "./TodoForm.css";
 
-const TodoForm = ({ todos, createTodoItem, ...props }) => {
+const TodoForm = ({ todos, createTodoItem }) => {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -31,17 +31,14 @@ const TodoForm = ({ todos, createTodoItem, ...props }) => {
 
     function saveForm(e) {
         e.preventDefault();
-        // alert(
-        //     `Title: ${formData.title} \n Description: ${formData.description}`
-        // );
-        // props.addNewItem(formData);
         const duplicateItem = todos.some(todo => todo.title === formData.title);
         if (!duplicateItem) {
             createTodoItem(formData);
-            props.setShowForm(false);
         } else {
             alert("Item exists");
         }
+
+        resetFormData(e);
     }
 
     return (

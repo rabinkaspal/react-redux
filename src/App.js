@@ -12,7 +12,7 @@ const App = () => {
 
     return (
         <div className="todo-container">
-            <TodoForm setShowForm={setShowForm} className="df" />
+            <TodoForm setShowForm={setShowForm} />
             <div className="todo-list">
                 <h2>My Todo List</h2>
                 {/* <button onClick={handleClick} className="btn-add">

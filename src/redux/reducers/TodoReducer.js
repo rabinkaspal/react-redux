@@ -13,11 +13,24 @@ const todos = (state = [], action) => {
             break;
 
         case types.MARK_TODO_COMPLETED:
-            return state.map(item => {
+            const s = state.map(item => {
                 return item.title === todo.title
                     ? { ...item, isCompleted: true }
                     : item;
             });
+
+            const sorter = (a, b) => {
+                if (a.isCompleted) {
+                    return 1;
+                }
+                if (b.isCompleted) {
+                    return -1;
+                }
+                return a.isCompleted > b.isCompleted ? -1 : 1;
+            };
+            s.sort(sorter);
+
+            return s;
 
             break;
 
