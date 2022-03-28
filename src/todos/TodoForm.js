@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTodoRequest } from "../redux/thunks/todoThunks";
+import { getTodos } from "../selector";
 import "./TodoForm.css";
 
 const TodoForm = ({ todos, createTodoItem }) => {
@@ -77,7 +78,7 @@ const TodoForm = ({ todos, createTodoItem }) => {
 };
 
 const mapStateToProps = state => ({
-    todos: state.todos,
+    todos: getTodos(state),
 });
 
 const mapDispatchToProps = dispatch => ({

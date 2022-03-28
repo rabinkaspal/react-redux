@@ -8,9 +8,15 @@ import {
     removeTodoRequest,
     todoCompletedRequest,
 } from "../redux/thunks/todoThunks";
+import {
+    getTodoIsLoading,
+    getCompletedTodos,
+    getIncompleteTodos,
+} from "../selector";
 
 function TodoList({
-    todos = [],
+    incompleteTodos,
+    completedTodos,
     deleteTodoItem,
     markTodoCompleted,
     isLoading,
@@ -23,7 +29,17 @@ function TodoList({
     const loadingMessage = <div>Loading todos .... </div>;
     const content = (
         <>
-            {todos.map(todo => (
+            {incompleteTodos.map(todo => (
+                <TodoListItem
+                    key={todo.id}
+                    todo={todo}
+                    onDeleteTodoItem={deleteTodoItem}
+                    onMarkItemComplete={markTodoCompleted}
+                />
+            ))}
+            <h3>Completed Items</h3>
+            <hr />
+            {completedTodos.map(todo => (
                 <TodoListItem
                     key={todo.id}
                     todo={todo}
@@ -38,8 +54,9 @@ function TodoList({
 }
 
 const mapStateToProps = state => ({
-    todos: state.todos,
-    isLoading: state.isLoading,
+    completedTodos: getCompletedTodos(state),
+    incompleteTodos: getIncompleteTodos(state),
+    isLoading: getTodoIsLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
