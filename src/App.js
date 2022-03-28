@@ -1,7 +1,29 @@
 import React, { useState } from "react";
-import "./App.css";
 import TodoList from "./todos/TodoList";
 import TodoForm from "./todos/TodoForm";
+import styled from "styled-components";
+import "./App.css";
+
+const TodoContainer = styled.div`
+    max-width: 90%;
+    display: flex;
+    gap: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    overflow: auto;
+
+    @media (max-width: 610px) {
+        .todo-container {
+            flex-direction: column;
+        }
+    }
+`;
+
+const TodoListContainer = styled.div`
+    flex-grow: 1;
+    overflow: hidden;
+    overflow-y: scroll;
+`;
 
 const App = () => {
     const [showForm, setShowForm] = useState(false);
@@ -11,16 +33,13 @@ const App = () => {
     }
 
     return (
-        <div className="todo-container">
+        <TodoContainer>
             <TodoForm setShowForm={setShowForm} />
-            <div className="todo-list">
+            <TodoListContainer>
                 <h2>My Todo List</h2>
-                {/* <button onClick={handleClick} className="btn-add">
-                    + Add New
-                </button> */}
                 <TodoList />
-            </div>
-        </div>
+            </TodoListContainer>
+        </TodoContainer>
     );
 };
 

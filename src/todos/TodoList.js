@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import TodoListItem from "./TodoListItem";
-import "./TodoList.css";
 import { markTodoCompleted } from "../redux/actions/TodoActions";
 import { connect } from "react-redux";
 import {
@@ -8,11 +7,12 @@ import {
     removeTodoRequest,
     todoCompletedRequest,
 } from "../redux/thunks/todoThunks";
+
 import {
     getTodoIsLoading,
     getCompletedTodos,
     getIncompleteTodos,
-} from "../selector";
+} from "../redux/reselect/selector";
 
 function TodoList({
     incompleteTodos,
