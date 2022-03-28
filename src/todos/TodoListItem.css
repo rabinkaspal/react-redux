@@ -44,7 +44,7 @@
     background-color: green !important;
 }
 
-.button-container button:not(last-child) {
+.button-container button:not(:last-child) {
     margin-right: 10px;
 }
 

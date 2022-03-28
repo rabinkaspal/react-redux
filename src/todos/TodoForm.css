@@ -1,47 +1,54 @@
+@media (max-width: 610px) {
+    .todo-form {
+        /* width: 100%; */
+    }
+}
+
 .todo-form {
-    width: 500px;
+    min-width: 300px;
+    width: auto;
+    max-width: 500px;
 }
 .todo-form label {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
 }
 
 .todo-form form {
-    padding: 30px;
+    padding: 12px;
     background-color: #f3f3f3;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 .todo-form .form-control {
-    margin-block: 25px;
+    margin: 5px auto 12px;
 }
 .todo-form input {
-    width: 100%;
+    width: calc(100% - 12px);
     display: block;
     height: 32px;
     padding: 5px;
     border: none;
     outline: none;
-    margin: 5px auto;
     padding: 5px 8px;
     border-radius: 4px;
 }
 
 .todo-form button {
-    width: 250px;
-    padding: 15px 0;
+    min-width: 95px;
+    padding: 9px 0;
     border: none;
     border-radius: 6px;
     color: white;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 18px;
+    text-transform: CAPITALIZE;
+    /* font-weight: 600; */
+    font-size: 15px;
     transition: all 500ms ease;
 }
 
 .todo-form .button-container {
     display: flex;
-    margin-top: 25px;
+    margin-top: 18px;
+    justify-content: flex-end;
 }
 
 .todo-form .button-container .btn-save {
@@ -65,5 +72,5 @@ input:focus {
 }
 
 :placeholder-shown {
-    font-size: 16px;
+    font-size: 14px;
 }

@@ -16,9 +16,6 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .todo-container {
@@ -28,6 +25,12 @@ body {
     margin: 0 auto;
     overflow: hidden;
     overflow: auto;
+}
+
+@media (max-width: 610px) {
+    .todo-container {
+        flex-direction: column;
+    }
 }
 
 .todo-list {

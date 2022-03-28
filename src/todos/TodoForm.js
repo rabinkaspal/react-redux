@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { createTodo } from "../redux/actions/TodoActions";
+import { addTodoRequest } from "../redux/thunks/todoThunks";
 import "./TodoForm.css";
 
 const TodoForm = ({ todos, createTodoItem }) => {
     const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        completed: false,
+        text: "",
     });
 
     function handleChange(event) {
@@ -23,15 +21,13 @@ const TodoForm = ({ todos, createTodoItem }) => {
     function resetFormData(e) {
         e.preventDefault();
         setFormData({
-            title: "",
-            description: "",
-            completed: false,
+            text: "",
         });
     }
 
     function saveForm(e) {
         e.preventDefault();
-        const duplicateItem = todos.some(todo => todo.title === formData.title);
+        const duplicateItem = todos.some(todo => todo.text === formData.text);
         if (!duplicateItem) {
             createTodoItem(formData);
         } else {
@@ -46,17 +42,17 @@ const TodoForm = ({ todos, createTodoItem }) => {
             <h2>Add New ToDo</h2>
             <form>
                 <div className="form-control">
-                    <label htmlFor="title">Title</label>
+                    <label htmlFor="text">Title</label>
                     <input
                         autoComplete="off"
                         type="text"
-                        name="title"
+                        name="text"
                         placeholder="Enter Todo Item"
-                        value={formData.title}
+                        value={formData.text}
                         onChange={handleChange}
                     />
                 </div>
-                <div className="form-control">
+                {/* <div className="form-control">
                     <label htmlFor="title">Description</label>
                     <input
                         autoComplete="off"
@@ -66,13 +62,13 @@ const TodoForm = ({ todos, createTodoItem }) => {
                         value={formData.description}
                         onChange={handleChange}
                     />
-                </div>
+                </div> */}
                 <div className="button-container">
+                    <button onClick={resetFormData} className="btn-cancel">
+                        Reset
+                    </button>
                     <button onClick={saveForm} className="btn-save">
                         Save
-                    </button>
-                    <button onClick={resetFormData} className="btn-cancel">
-                        Cancel
                     </button>
                 </div>
             </form>
@@ -85,7 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    createTodoItem: todo => dispatch(createTodo(todo)),
+    createTodoItem: todo => dispatch(addTodoRequest(todo.text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
